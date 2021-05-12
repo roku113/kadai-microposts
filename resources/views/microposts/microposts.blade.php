@@ -12,12 +12,20 @@
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
+                    <div class="container">
+                        <div class="row justify-content-sm-start">
+                            <div class="col-sm-auto">
                         @include('user_favorite.favorite_button')
+                        </div>
+                        <div class="col-sm-auto">
                         @if (Auth::id() == $micropost->user_id)
                             {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
                         @endif
+                        </div>
+                        </div>
+                        </div>
                 </div>
             </li>
         @endforeach
